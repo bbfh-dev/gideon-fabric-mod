@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.bubblefish.gideon.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "OperatingSystemMixin"
+  ],
+  "client": [
+    "ChatHudMixin",
+    "ClientPlayerEntityMixin",
+    "ClientPlayerInteractionManagerMixin",
+    "GameRendererMixin",
+    "InGameHudMixin",
+    "PlayerEntityRendererMixin",
+    "PlayerListHudMixin",
+    "gui.screen.GameMenuScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
