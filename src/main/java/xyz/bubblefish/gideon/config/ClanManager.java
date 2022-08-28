@@ -25,7 +25,7 @@ public class ClanManager {
             if (nameFormattingCache.get(cacheName) != null) return nameFormattingCache.get(cacheName);
 
             Clan clanKey = clanMap.getOrDefault(clan, null);
-            if (clanKey == null) return new LiteralText(name);
+            if (clanKey == null) return new LiteralText(name).formatted(Formatting.GRAY);
 
             String configClan = ConfigManager.configMap.getOrDefault("clan", "");
             if (configClan.equals("")) {
@@ -44,6 +44,12 @@ public class ClanManager {
             if (Objects.equals(ConfigManager.configMap.getOrDefault("group", "1"), String.valueOf(clanKey.group()))) {
                 if (role.equals("S")) output = new LiteralText("\u2b50 ").formatted(Formatting.GOLD).append(new LiteralText(name).formatted(Formatting.BOLD));
                 else output = new LiteralText("\u2b50 ").formatted(Formatting.GREEN).append(new LiteralText(name).formatted(Formatting.BOLD));
+                nameFormattingCache.put(cacheName, output);
+                return output;
+            }
+
+            if (Math.abs(Integer.parseInt(ConfigManager.configMap.getOrDefault("group", "1")) - clanKey.group()) > 1) {
+                output = new LiteralText("\u21c4 ").formatted(Formatting.WHITE).append(new LiteralText(name).formatted(Formatting.BOLD));
                 nameFormattingCache.put(cacheName, output);
                 return output;
             }
@@ -77,7 +83,14 @@ public class ClanManager {
                 return output;
             }
 
-            output = new LiteralText("\u2620 ").formatted(Formatting.RED).append(new LiteralText(name).formatted(Formatting.BOLD));
+            if (Math.abs(Integer.parseInt(ConfigManager.configMap.getOrDefault("group", "1")) - clanKey.group()) > 1) {
+                output = new LiteralText("\u21c4 ").formatted(Formatting.WHITE).append(new LiteralText(name).formatted(Formatting.BOLD));
+                hudFormattingCache.put(cacheName, output);
+                return output;
+            }
+
+            if (role.equals("S")) output = new LiteralText("\u2620 ").formatted(Formatting.DARK_RED).append(new LiteralText(name).formatted(Formatting.BOLD));
+            else output = new LiteralText("\u2620 ").formatted(Formatting.RED).append(new LiteralText(name).formatted(Formatting.BOLD));
             hudFormattingCache.put(cacheName, output);
         }
         return output;

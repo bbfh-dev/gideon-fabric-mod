@@ -19,6 +19,7 @@ public class ClientPlayerEntityMixin {
             )
     )
     private boolean alwaysPressed(KeyBinding sprintKey) {
-        return Objects.equals(ConfigManager.configMap.getOrDefault("toggle_sprint", "true"), "true") || sprintKey.isPressed();
+        if (ConfigManager.configMap.getOrDefault("toggle_sprint", "true").equals("true")) return true;
+        return sprintKey.isPressed();
     }
 }

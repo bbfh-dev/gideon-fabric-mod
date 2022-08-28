@@ -10,6 +10,7 @@
     "ChatHudMixin",
     "ClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
+    "EntityRenderDispatcherMixin",
     "GameRendererMixin",
     "InGameHudMixin",
     "PlayerEntityRendererMixin",
