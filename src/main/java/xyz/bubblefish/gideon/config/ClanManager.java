@@ -93,6 +93,7 @@ public class ClanManager {
             else output = new LiteralText("\u2620 ").formatted(Formatting.RED).append(new LiteralText(name).formatted(Formatting.BOLD));
             hudFormattingCache.put(cacheName, output);
         }
+
         return output;
     }
 
